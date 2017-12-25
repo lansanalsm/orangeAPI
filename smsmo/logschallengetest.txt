@@ -1,0 +1,6 @@
+﻿2015-10-30UTC17:39:18 - SMS MO received from 99900000017501 with message=[votre requette ne correspond à aucune annonce publier sur makiti pour le moment, merci et a très bientot sur makiti] from [] SMS short code
+2015-10-30UTC17:46:19 - le message ne repond pas au format donné
+2015-10-30UTC17:46:19 - SMS MO received from 99900000017501 with message=[] from [] SMS short code
+2015-10-30UTC17:46:22 - le message ne repond pas au format donné
+2015-10-30UTC17:46:22 - SMS MO received from 99900000017501 with message=[] from [] SMS short code
+2015-10-30UTC17:47:48 - received a request but not a real SMS MO

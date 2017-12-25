@@ -1,0 +1,84 @@
+
+/*
+if(isset($_GET['ref']) && !empty($_GET['ref'])){
+	$var=(int) htmlspecialchars($_GET['ref']);
+	$affiche_form=false;
+	
+   try{
+			require('../../inc/connection_bd.php');
+			$requete = $bdd->prepare('SELECT id_annonce,titre,texte,prix, quantite,t_annonce.quartier,t_annonce.nom AS nom_ann,t_annonce.telephone AS tel_ann,t_annonce.email AS email_ann, DATE_FORMAT(date_insertion, \' ajouté le %d/%m/%y &agrave; %Hh:%imin\') AS date_fr,
+									 t_ville.nom AS ville,
+									 t_unite_produit.nom AS unite,
+									 t_inscrit.nom AS nom_ins, t_inscrit.prenom AS prenom_ins, t_inscrit.telephone AS tel_ins, t_inscrit.email AS email_ins
+								FROM t_annonce
+								INNER JOIN t_ville ON t_annonce.id_ville=t_ville.id_ville
+								LEFT JOIN t_unite_produit ON t_unite_produit.id_unite=t_annonce.id_unite
+								LEFT JOIN t_inscrit ON t_inscrit.id_inscrit=t_annonce.id_inscrit
+								WHERE type_annonce = :type AND id_annonce=:id_annonce
+								LIMIT 1
+									');
+		  $requete->bindValue(':type', $type_annonce, PDO::PARAM_INT);
+		  $requete->bindValue(':id_annonce', $var, PDO::PARAM_INT);
+		  $requete->execute();
+		  
+		  
+		 if($requete->rowCount()>0){
+			if($tmp = $requete->fetch())
+			{ 	
+			  //pour l'unité et le prix:
+			   $prix=null;
+			   if($tmp['prix']==null or $tmp['prix']==''){
+				  $tmp['unite']=null;
+				  $prix="N/A";
+				  }
+				  else{ 
+					 if($tmp['unite']==null or $tmp['unite']==''){
+						$prix = $tmp['prix']." GNF"; 
+					}else{
+						$prix = $tmp['prix']." GNF / ".$tmp['unite'];
+					 }
+				}
+			//gestion du nom 
+			$nom="N/A";
+			if($tmp['nom_ann']!=null OR $tmp['nom_ann']!='' ){
+				$nom= $tmp['nom_ann'];
+			 }else if($tmp['nom_ins']!=null OR $tmp['nom_ins']!='' ){
+				$nom= $tmp['prenom_ins'].' '.$tmp['nom_ins'];
+			  }
+			//gestion de l'email et du telephone
+			$telephone="N/A";
+			if($tmp['tel_ann']!=null OR $tmp['tel_ann']!='' ){
+				$telephone= $tmp['tel_ann'];
+			 }else if($tmp['tel_ins']!=null OR $tmp['tel_ins']!='' ){
+				$telephone= $tmp['tel_ins'];
+			  }
+			  $email="N/A";
+			if($tmp['email_ann']!=null OR $tmp['email_ann']!='' ){
+				$email= $tmp['email_ann'];
+			 }else if($tmp['email_ins']!=null OR $tmp['email_ins']!='' ){
+				$email= $tmp['email_ins'];
+			  }
+			 
+		echo"   Titre: $tmp[titre]<br/>
+		        Date: $nom $tmp[date_fr]<br/>
+				Prix: $prix<br/>
+				Ville: $tmp[ville]<br/>
+				Quartier: $tmp[quartier]<br/>
+				Telephone: $telephone<br/>
+				E-mail: $email <br/>
+			   Description  : $tmp[texte]<br/>
+		";
+		}//if
+	
+	  //on increment  le nombre de lecture de la news
+	  require_once('../../inc/fonctions.php');
+	  incrementeLectureAnnonce($_GET['ref']);
+		
+		
+		}else{
+			 echo"Une erreur s'est produite lors de l'affichage de l'offre<br/>";
+		}
+	   }catch(Exception $e){ die('Erreur : '.$e->getMessage());}
+			 	 	
+}
+*/
